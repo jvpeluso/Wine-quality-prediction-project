@@ -1,0 +1,437 @@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@  WINE QUALITY CLASSES HELP  @@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+	
+	###########################
+	### CLASS dataHandler() ###
+	###########################
+	
+	* Class that loads, process and transform the data.
+	
+	__init__(self, dataFile, targCol = '', printI = True):
+    
+		Function that initialize the object.
+		
+		Arguments
+		---------
+		dataFile:  Path of the CSV file with the data.
+		targCol:   Target feature name.
+		printI:    Boolean value to print or not dataframe info in checkAll process, by default True.
+	
+	allTasks(self):
+	
+		Function that load the data into a dataframe, creates the new target feature, and checks the integrity of the data.
+		
+		Arguments
+		---------
+	
+	createTarg(self):
+	
+        Function that creates the new target value.
+		
+		Arguments
+		---------
+		
+	loadCsv(self, fileName):
+	
+		Function that loads a CSV file into a dataframe and return it.
+		
+		Arguments
+		---------
+		fileName:  Name of the CSV file to load.
+	
+	checkAll(self, df, Del = False, printI = False):
+	
+		Function that call the processes that chack data integrity on a given dataframe.
+		
+		df:        Dataframe.
+		Del:       Boolean value to delete or not NaN or duplicates values during the check, by default False.
+		printI:    Boolean value to print or not dataframe info, by default True.
+		
+	printShape(self, df):
+		
+		Function that prints the shape of a given dataframe.
+		
+		Arguments
+		---------
+		df:        Dataframe.
+
+	printInfo(self, df):
+	
+		Function that prints the info of a given dataframe.
+		
+		Arguments
+		---------
+		df:        Dataframe.
+	
+	checkNaN(self, df, Del = False):
+		
+		Function that looks for Nan values of a given dataframe, and delete if requested.
+		
+		Arguments
+		---------
+		df:        Dataframe.
+		Del:       Boolean value to delete or not Nan rows, by default False.
+
+	checkDup(self, df, Del = False):
+		
+		Function that looks for duplicated rows of a given dataframe, and delete if requested.
+		
+		Arguments
+		---------
+		df:        Dataframe.
+		Del:       Boolean value to delete or not Nan rows, by default False.
+		dupC:      Column subset to check the duplicates in a dataframe, by default is empty.
+	
+	createTarg(self):
+	
+        Function that renames the columns of the dataframe.
+		
+		Arguments
+		---------
+	
+	outliersC(self):
+	
+		Function that count the number of lower/upper outliers of a feature in a given DF.
+
+		Arguments
+		---------
+	
+	splitTrainTest(self, X,y,size,strat):
+	
+		Function that splits the data in train and test datasets.
+
+		Arguments
+		--------- 
+		X:         Features dataset.
+		y:         Target feature dataset.
+		size:      Test size.
+		strat:     Stratified feature.
+		
+	groupDF(self, col, method = 'mean'):
+	
+		Function that groups by a method the values of a column on a given dataframe, then returns it
+
+		Arguments
+		--------- 
+		col:       Feature to group by.
+		method:    Method to apply.
+		
+	aggData(self, df, group, agg, aggM, sort = '', sortL = [], asc = True):
+	
+		Function groups and aggregates data of a given dataframe, and returns it.
+		
+		Arguments
+		---------
+		df:        Dataframe.
+		group:     Group column.
+		agg:       Aggregate column.
+		aggM:      Aggregate method.
+		sort:      Column to sort by, by default empty.
+		sortL:     Columns list to sort by, by default empty list.
+		asc:       Sort in ascending manner, by default True.
+	
+	def dataPrep(self, feat, targ, TTsplit, strat):
+	
+		Function that process the data with functions that do:
+			* Train/test split.
+			* Data normalization
+			* Data upsample.
+		
+		Arguments
+		---------
+		feat:      Feature columns.
+		targ:      Target column.
+		TTsplit:   Test size.
+		strat:     Stratified train/test feature.
+		
+	normalize(self, trDF, tsDF, cols):
+	
+		Function that normalizes train and test datasets, and return them.
+		
+		Arguments
+		---------
+		trDF:      Train dataframe.
+		tsDF:      Test dataframe.
+		cols:      Columns.
+		
+	resample(self, dfX, dfY, End = False):
+	
+		Function that resample a dataframe using SMOTE.
+		
+		Arguments
+		---------
+		dfX:       Features dataframe.
+		dfY:       Target feature dataframe.
+		End:       Boolean value to know if is the last call or not, by default False. 
+		
+	#########################
+	### CLASS plotGraph() ###
+	#########################
+	
+	* Class that draw plots.
+	
+	__init__(self):
+        
+		Function that initialize the object.
+
+    setStyle(self, style = 'darkgrid'):
+        
+		Function sets the seaborn color style.
+		
+		Arguments
+		---------
+		style:     Style name, by default darkgrid.
+	
+	plotBarText(self, X, Y, fig, title, xLabel, xLabelFS = 10, rot = 45,
+                xTicksFS = 11, plotC = 'b', barW = 0.9, barTxtFS = 11):
+        
+        Function that draws a tunned bar plot.
+	
+		Arguments
+		---------
+		df:        Dataframe.
+		fig:       Figure.
+		title:     Plot title.
+		xLabel:    Label for the X axis.
+		xTicks:    Tick labels for the X axis.
+		xLabelFS:  X axis label font size, by default 10.
+		xTicksFS:  X axis tick labels font size, by default 11.
+		plotC:     Plot color, by default blue.
+		barW:      Width of the bars, by default 0.9.
+		barTxtFS:  Font size of the values above the bars, by default 11.
+		
+	plotKDE(self, fig, title, kde, featureD, labels, 
+            colors = ['b', 'g'], legLoc = 0, legFS = 12, titleFS = 15):
+	
+		Function that draw a KDE plot 
+
+		Arguments
+		---------
+		fig:       Figure.
+		title:     Plot Title.
+		featD:     Density feature.
+		kde:       Dataframes.
+		labels:    Labels for the densities.
+		colors:    Colors for the densities.
+		legLoc:    Location of the legend, by default 0.
+		legFS:     Font size for the legend, by default 10.
+		titleFS:   Font size for the title, by default 15.
+		
+	plotCorr(self, corr, title, figSize = [5,5], titleFS = 15, cmap = 'blues', annot = True, 
+             square = True, fmt = '.2f', vMM = [-1,1], lineW = 0.25, cbarD = {}, rot = 90,
+             annD = {}, ticksFS = 10, yLim = [0.0,0.0]):
+		
+		
+		Arguments
+		---------
+		corr:      Correlation dataframe.
+		title:     Plot title.
+		figSize:   Figure size.
+		titleFS:   Title font size, by default 15.
+		cmap:      Color map for the heatmap, by default blues.
+		annot:     Boolean value to print the correlation scores, by default True.
+		square:    Boolean value to force square shape of the heatmap, by default True.
+		fmt:       Format of the annotations, by default 2 decimals.
+		vMM:       Min and Max values for the color bar of the heatmap, by default [-1,1].
+		lineW:     Border line width of the heatmap, by default 0.25.
+		cBarD:     Color bar dictionary of properties, by default {}.
+		rot:       Rotation angle of X axis labels, by default 90.
+		annD:      Annotations dictionary of properties, by default {}.
+		ticksFS:   Tick labels font size, by default 10.
+		yLim:      Y axis plot limits, by default [0.0,0.0].
+	
+	plotViolin(self, fig, X, y, plotC, title, xTicks, titleFS = 15,
+               xTicksFS = 10, inner = 'box'):
+	
+		Function that draw a violin plot 
+
+		Arguments
+		---------
+		fig:       Figure.
+		X:         X axis.
+		y:         y axis.
+		plotC:     Colors for the violins.
+		title:     Plot Title.
+		xTicks:    Ticks labels for the x axis.
+		titleFS:   Font size title, by default is 15.
+		xTicksFS:  Font size of the ticks for the x axis, by default 10.
+		inner:     Representation of the datapoints in the violin interior, by default box.
+		
+	plotScat(self, df, X, y, colHue, colStyle, palette, fig, markers, legLbl,
+             legLoc = 1, s = 25, yLblCo = [-0.105, 0.5], lblFS = 12, titleFS = 13):
+			 
+		Function that draw a scatter plot
+
+		Arguments
+		---------
+		df:        DataFrame.
+		X:         Column for X axis.
+		y:         Column for y axis.
+		colHue:    Column for the hue of the data points.
+		colStyle:  Column for the markers.
+		palette:   Color palette.
+		fig:       Figure.
+		markers:   Dictionary of markers for the data points.
+		legLbl:    Labels for the legend.
+		legLoc:    Legend location, by default 1.
+		s:         Size of the data points, by default 25.
+		yLblCo:    Coordinates of the label for the Y axis, by default [-0.105, 0.5].
+		lblFS:     Labels font size, by default 12.
+		titleFS:   Title font size, by default 13.
+		
+	plotCVS(self, X, y, fig, title, leg, titleFS = 15, lineW = 1, 
+            xTicksFS = 10, legLoc = 0, legFS = 10):
+			
+		Function that draw a line plot
+
+		Arguments
+		---------
+		X:         X axis.
+		y:         y axis.
+		fig:       Figure.
+		title:     Plot title.
+		titleFS:   Title font size, by default 15.
+		lineW:     Line width.
+		xTicksFS:  Font size of the ticks for the x axis, by default is 10.
+		legLoc:    Legend location, by default 0.
+		legFS:     Font size of the legend, by default 10.
+		
+	plotConfMatrix(self, clfN, yTest, yPred, target_names, title='Confusion matrix', 
+                   cmap=None, figSize = [8,6], normalize=True):
+				   
+		Function that given predictions and actual labels, make a Confussion matrix plot (Heatmap)
+
+		Arguments
+		---------
+		clfN:      Classifier name.
+		yTest:     Actual labels.
+		yPred:     Predicted labels.
+		title:     Title of the plot, by default Confusion matrix.
+		cmap:      Color map, by default none.
+		figSize:   Figure size.
+		normalize: Boolean value to normalize or not the values of trhe matrix, by default True.
+
+	plotROC(self, xList, yList, fig, lstCLFN, lstScores, xLabel, yLabel, 
+            title, titleFS = 15, legLoc = 0, legFS = 10):	
+	
+		Arguments
+		---------
+		xList:     X axis.
+		yList:     Y axis.
+		fig:       Figure.
+		lstCLFN:   Classifiers names.
+		stCLFN:    ROC scores.
+		xLabel:    Label of the X axis.
+		yLabel:    Label of the y axis.
+		title:     Plot title.
+		titleFS:   Font size of the title, by default 15.
+		legLoc:    Legend location, by default 0.
+		legFS:     Font size of the legend, by default 10.
+		
+	plotFeatImp(self, X, Y, fig, title, xLabel, xLabelFS = 10, rot = 45,
+                xTicksFS = 11, plotC = 'b', barW = 0.9, barTxtFS = 11):
+				
+	Function that draws a tunned bar plot for the feature importances.
+		
+		Arguments
+		---------
+		X:         X axis values.
+		y:         y axis values.
+		fig:       Figure.
+		title:     Plot title.
+		xLabel:    Label for the X axis.
+		xLabelFS:  X axis label font size, by default 10.
+		rot:       Rotation angle of X axis labels, by default 45.
+		xTicksFS:  X axis tick labels font size, by default 11.
+		plotC:     Plot color, by default blue.
+		barW:      Width of the bars, by default 0.9.
+		barTxtFS:  Font size of the values above the bars, by default 11.
+		
+	############################
+	### CLASS modelHandler() ###
+	############################	
+	
+	__init__(self):
+        
+		Function that initialize the object.
+	
+	CVS(self, X, y, lstClf, lstClfN, lstScores, lstCols, cv = 5):
+	
+		Function that applies Cross_val_score to a list of classifiers, and returns it results in a dataframe
+
+		Arguments
+		---------
+		X:         Features.
+		y:         Target.
+		lstCLF:    Classifiers.
+		lstCLFN:   Classifier names. 
+		lstScores: Scorings to get with the CVS.
+		lstCols:   Column names of the dataframe that will store the CVS results.
+		cv:        Cross-validation folders, by default 5.
+		
+	paramTunning(self, X, y, clfL, clfN, parGrid, cv = 5, score = 'accuracy'):
+	
+		Given the train and test set, a list of classifiers, and the hyperparameters grid, 
+		perform the GridSearchCV on each of them, and print the best results data.
+
+		Arguments
+		---------
+		X:         Features.
+		y:         Target.
+		clfL:      Classifiers.
+		clfN:      Classifiers names.
+		parGrid:   List of hyperparameters grid.
+		cv:        Number of cross-validation splits, by default 5.
+		score:     Score to be calculated, by default Accuracy.
+	
+	modelValidation(self, lstMod, lstModN, lstLbl, figROC, figSizeCM = [6,3]):
+	
+		Function that validate the models with functions that do:
+			* Fit the model and predict.
+			* Plot a confusion matrix of the predictions with scores.
+			* Plot the ROC-AUC graph.
+		
+		Arguments
+		---------
+		lstMod:    Models to validate.
+		lstModN:   Models name.
+		lstLbl:    Lables for the confusion matrix.
+		figROC:    Figure to plot ROC-AUC.
+		figSizeCM: Figure size of the confusion matrix.
+	
+	modelFitPred(self, Model):
+	
+		Function that fits, predict labels and probabilities using train/test datasets with a given model.
+		
+		Arguments
+		---------
+		Model:     Model.
+		
+	bestCLF(self, bestM, fig):
+	
+		Function that fits, plot the feature importances and predicts, then save them to an excel file with a given model.
+		
+		Arguments
+		---------
+		bestM:     Model.
+		fig:       Feature importance figure.
+		
+	savePred(self, pred):
+        
+		Function that takes an array of predictions and save it into an excel file.
+		
+		Arguments
+		---------
+		pred:      Predictions array.
+        
+    featImp(self, model, colN, fig1):
+	
+        Function that takes the feature importance of the model, format it and create a plot.
+		
+		Arguments
+		---------
+		model:     Model.
+		colN:      Feature column names.
+		fig:       Figure.
+		
