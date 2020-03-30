@@ -6,6 +6,8 @@
 
 **[Vinho Verde](https://en.wikipedia.org/wiki/Vinho_Verde)** refers to Portuguese wine that originated in the historic **[Minho](https://en.wikipedia.org/wiki/Minho_Province)** province in the far north of the country. The modern-day *Vinho Verde* region, originally designated in 1908, includes the old Minho province plus adjacent areas to the south. In 1976, the old province was dissolved.
 
+![](https://i.imgur.com/kF3ht6Y.png)
+
 Vinho Verde is not a grape variety, it is a **[DOC](https://en.wikipedia.org/wiki/Denomina%C3%A7%C3%A3o_de_Origem_Controlada)** for the production of wine. The name means *green wine* but translates as *young wine*, with wine being released three to six months after the grapes are harvested. They may be red, white, or rosé and they are usually consumed soon after bottling.
 
 For further information, you can go to their official **[web](https://www.vinhoverde.pt/en/homepage)**.
@@ -65,11 +67,15 @@ At first sight, after computing the basic statistics of the dataset, we can draw
 
 As expected, we are dealing with an *imbalanced classification problem*, having ***86.43%*** of the records are labeled as **not good** (*0*), implying a ratio of 1:6 approximately. 
 
-It is important to have in mind, that almost 40% of the records in the original quality distribution belong to the label **6**, which is the threshold in the new quality distribution between labels. You can see both distribution bar charts in the notebook.
+![](https://i.imgur.com/LLGE5VN.png)
+
+It is important to have in mind, that almost 40% of the records in the original quality distribution belong to the label **6**, which is the threshold in the new quality distribution between labels.
 
 ### Correlations 
 
-The target value isn't strongly correlated to any of the features, being *Alcohol* the highest (*0.41*), but there are strong correlations between some of them, especially, *Fixed acidity* is strongly correlated with other 3 features. And another strong and *logic* correlation is between the total and free *CO2*. In the notebook, you can graphically see those relationships in the *correlation matrix* graph.
+The target value isn't strongly correlated to any of the features, being *Alcohol* the highest (*0.41*), but there are strong correlations between some of them, especially, *Fixed acidity* is strongly correlated with other 3 features. And another strong and *logic* correlation is between the total and free *CO2*. 
+
+![](https://i.imgur.com/SEJcwk9.png)
 
 The top-4 correlation between features are:
 
