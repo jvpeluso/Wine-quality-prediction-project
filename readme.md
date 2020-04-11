@@ -148,7 +148,7 @@ By far, the *normalized-oversampled* dataset had the best performance on all 4 m
 
 ![](https://i.imgur.com/xp3Aa10.png)
 
-### Model tunning
+### Model tuning
 
 To correctly tune the models, a Grid Search Cross-validation was made, with a selected range of the most important hyperparameters of each algorithm, doing a 5 folder cross-validation to avoid overfitting. The hyperparameters with the best F1 scores were:
 
