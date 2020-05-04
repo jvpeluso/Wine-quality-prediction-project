@@ -159,7 +159,7 @@ XGBoost | gamma = 0.005 - learning_rate = 0.25 - max_depth =  6 - max_features =
 Random Forest | max_depth = 14 - max_features = 0.4 - min_samples_leaf = 2 | 0.9354 
 *Logistic Regression* | C = 0.01 | 0.8393 
 
-At this point, we dropped the *Logistic Regression* model (lowest F1 score) and continued with the other three. After a more careful tunning of the values obtained for the hyperparameters (shown above), the best hyperparameters for the 3 models are:
+At this point, we dropped the *Logistic Regression* model (lowest F1 score) and continued with the other three. After a more careful tuning of the values obtained for the hyperparameters (shown above), the best hyperparameters for the 3 models are:
 
 Classifier | Parameters | 
 --- | --- 
