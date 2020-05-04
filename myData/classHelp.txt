@@ -186,7 +186,7 @@
 	plotBarText(self, X, Y, fig, title, xLabel, xLabelFS = 10, rot = 45,
                 xTicksFS = 11, plotC = 'b', barW = 0.9, barTxtFS = 11):
         
-        Function that draws a tunned bar plot.
+        Function that draws a tuned bar plot.
 	
 		Arguments
 		---------
@@ -332,7 +332,7 @@
 	plotFeatImp(self, X, Y, fig, title, xLabel, xLabelFS = 10, rot = 45,
                 xTicksFS = 11, plotC = 'b', barW = 0.9, barTxtFS = 11):
 				
-	Function that draws a tunned bar plot for the feature importances.
+	Function that draws a tuned bar plot for the feature importances.
 		
 		Arguments
 		---------
